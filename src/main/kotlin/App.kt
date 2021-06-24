@@ -11,11 +11,17 @@ import react.dom.div
 import react.dom.h1
 import react.dom.h3
 import react.dom.img
+import react.setState
 import styled.css
 import styled.styledDiv
 
+
+external interface AppState : RState {
+    var currentVideo: Video?
+}
+
 @JsExport
-class App : RComponent<RProps, RState>() {
+class App : RComponent<RProps, AppState>() {
     override fun RBuilder.render() {
         h1 {
             +"Hello, React+KotlinJS"
@@ -26,6 +32,8 @@ class App : RComponent<RProps, RState>() {
             }
             child(VideoList::class) {
                 attrs.videos = unwatchedVideos
+                attrs.selectedVideo = state.currentVideo
+                attrs.onSelectVideo = { video -> setState { currentVideo = video } }
             }
 
             h3 {
@@ -33,6 +41,8 @@ class App : RComponent<RProps, RState>() {
             }
             videoList {
                 videos = watchedVideos
+                selectedVideo = state.currentVideo
+                onSelectVideo = { video -> setState { currentVideo = video } }
             }
         }
         styledDiv {
