@@ -6,21 +6,31 @@ import react.RProps
 import react.RState
 import react.ReactElement
 import react.dom.p
+import react.setState
 
 external interface VideoListProps : RProps {
     var videos: List<Video>
 }
 
+external interface VideoListState : RState {
+    var selectedVideo: Video?
+}
+
 @JsExport
-class VideoList : RComponent<VideoListProps, RState>() {
+class VideoList : RComponent<VideoListProps, VideoListState>() {
     override fun RBuilder.render() {
         for (video in props.videos) {
             p {
                 key = video.id.toString()
                 attrs {
                     onClickFunction = {
-                        window.alert("clicked $video")
+                        setState {
+                            selectedVideo = video
+                        }
                     }
+                }
+                if (video == state.selectedVideo) {
+                    +"▶ "
                 }
                 +"${video.speaker}: ${video.title}"
             }
