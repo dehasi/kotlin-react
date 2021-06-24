@@ -6,12 +6,27 @@ group 'me.dehasi'
 version 'LATEST-SNAPSHOT'
 
 repositories {
+    maven {
+        url "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers"
+    }
+//    maven {
+//        url "https://kotlin.bintray.com/kotlin-js-wrappers/"
+//    }
+//    maven {
+//        url "https://dl.bintray.com/kotlin/kotlin-eap"
+//    }
     mavenCentral()
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
     testImplementation "org.jetbrains.kotlin:kotlin-test-js"
+
+    //React, React DOM + Wrappers (chapter 3)
+    implementation("org.jetbrains:kotlin-react:17.0.2-pre.154-kotlin-1.5.0")
+    implementation("org.jetbrains:kotlin-react-dom:17.0.2-pre.154-kotlin-1.5.0")
+    implementation(npm("react", "17.0.2"))
+    implementation(npm("react-dom", "17.0.2"))
 }
 
 kotlin {
