@@ -11,7 +11,6 @@ import react.dom.div
 import react.dom.h1
 import react.dom.h3
 import react.dom.img
-import react.dom.p
 import styled.css
 import styled.styledDiv
 
@@ -25,12 +24,16 @@ class App : RComponent<RProps, RState>() {
             h3 {
                 +"Videos to watch"
             }
-            child(VideoList::class){}
+            child(VideoList::class) {
+                attrs.videos = unwatchedVideos
+            }
 
             h3 {
                 +"Videos watched"
             }
-            child(VideoList::class){}
+            child(VideoList::class) {
+                attrs.videos = watchedVideos
+            }
         }
         styledDiv {
             css {
