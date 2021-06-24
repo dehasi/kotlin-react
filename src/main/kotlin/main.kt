@@ -1,10 +1,17 @@
 import kotlinx.browser.document
+import kotlinx.css.Position
+import kotlinx.css.position
+import kotlinx.css.px
+import kotlinx.css.right
+import kotlinx.css.top
 import react.dom.div
 import react.dom.h1
 import react.dom.h3
 import react.dom.img
 import react.dom.p
 import react.dom.render
+import styled.css
+import styled.styledDiv
 
 external interface Video {
     val id: Int
@@ -55,7 +62,12 @@ fun main() {
                 }
             }
         }
-        div {
+        styledDiv {
+            css {
+                position = Position.absolute
+                top = 10.px
+                right = 10.px
+            }
             h3 {
                 +"John Doe: Building and breaking things"
             }
