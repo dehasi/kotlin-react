@@ -2,6 +2,7 @@ import react.RBuilder
 import react.RComponent
 import react.RProps
 import react.RState
+import react.ReactElement
 import react.dom.p
 
 external interface VideoListProps : RProps {
@@ -17,5 +18,11 @@ class VideoList : RComponent<VideoListProps, RState>() {
                 +"${video.speaker}: ${video.title}"
             }
         }
+    }
+}
+
+fun RBuilder.videoList(handler: VideoListProps.() -> Unit): ReactElement {
+    return child(VideoList::class) {
+        this.attrs(handler)
     }
 }
