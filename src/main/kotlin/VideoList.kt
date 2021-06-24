@@ -1,3 +1,5 @@
+import kotlinx.browser.window
+import kotlinx.html.js.onClickFunction
 import react.RBuilder
 import react.RComponent
 import react.RProps
@@ -15,6 +17,11 @@ class VideoList : RComponent<VideoListProps, RState>() {
         for (video in props.videos) {
             p {
                 key = video.id.toString()
+                attrs {
+                    onClickFunction = {
+                        window.alert("clicked $video")
+                    }
+                }
                 +"${video.speaker}: ${video.title}"
             }
         }
