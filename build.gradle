@@ -33,6 +33,8 @@ dependencies {
 
     //Video Player (chapter 7)
     implementation(npm("react-youtube-lite", "1.0.1"))
+    //Share Buttons (chapter 7)
+    implementation(npm("react-share", "~4.2.1"))
 }
 
 kotlin {
