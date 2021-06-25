@@ -59,14 +59,14 @@ class VideoPlayer : RComponent<VideoPlayerProps, RState>() {
                     marginBottom = 10.px
                 }
                 emailShareButton {
-                    attrs.url = props.video.url
+                    attrs.url = props.video.videoUrl
                     emailIcon {
                         attrs.size = 32
                         attrs.round = true
                     }
                 }
                 telegramShareButton {
-                    attrs.url = props.video.url
+                    attrs.url = props.video.videoUrl
                     telegramIcon {
                         attrs.size = 32
                         attrs.round = true
@@ -74,7 +74,7 @@ class VideoPlayer : RComponent<VideoPlayerProps, RState>() {
                 }
             }
             reactPlayer {
-                attrs.url = props.video.url
+                attrs.url = props.video.videoUrl
             }
         }
     }
